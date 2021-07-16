@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import NavTabs from './NavTabs';
 import pageData from './pages';
-import { hashToIndex } from './utils';
+import Home from './pages/Home';
+import Blog from './pages/Blog';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 const PortfolioContainer = () => {
-  useEffect(() => setCurrentPage(hashToIndex(pageData)), []);
-  
   const [currentPage, setCurrentPage] = useState('Home');
-  
+
   const handlePageChange = (page) => setCurrentPage(page);
-  
+
   const pages = Object.keys(pageData);
   const data = { pages, currentPage, handlePageChange };
-  const Page = pageData[currentPage];
+
   return (
-    <>
+    <BrowserRouter>
       <NavTabs {...data} />
-      {Page ? <Page /> : <h1> 404 Not Found</h1>}
-    </>
+      <Route path='/' exact component={Home} />
+      <Route path='/About' exact component={About} />
+      <Route path='/Blog' exact component={Blog} />
+      <Route path='/Contact' exact component={Contact} />
+    </BrowserRouter>
   );
 }
 
