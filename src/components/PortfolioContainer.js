@@ -8,9 +8,14 @@ import Contact from './pages/Contact';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 const PortfolioContainer = () => {
-  const [currentPage, setCurrentPage] = useState('Home');
+  useEffect(() => {
+    setCurrentPage(pathname)
+  }, []);
 
-  const handlePageChange = (page) => setCurrentPage(page);
+  const { pathname } = window.location;
+  const [currentPage, setCurrentPage] = useState('/');
+
+  const handlePageChange = (page) => setCurrentPage();
 
   const pages = Object.keys(pageData);
   const data = { pages, currentPage, handlePageChange };
