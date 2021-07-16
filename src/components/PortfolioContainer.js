@@ -18,10 +18,10 @@ const PortfolioContainer = () => {
   return (
     <BrowserRouter>
       <NavTabs {...data} />
-      <Route path='/' exact component={Home} />
-      <Route path='/About' exact component={About} />
-      <Route path='/Blog' exact component={Blog} />
-      <Route path='/Contact' exact component={Contact} />
+      <Route path={`${process.env.PUBLIC_URL}/`} exact component={Home} />
+      <Route path={`${process.env.PUBLIC_URL}/About`} exact component={About} />
+      <Route path={`${process.env.PUBLIC_URL}/Blog`} exact component={Blog} />
+      <Route path={`${process.env.PUBLIC_URL}/Contact`} exact component={Contact} />
     </BrowserRouter>
   );
 }
